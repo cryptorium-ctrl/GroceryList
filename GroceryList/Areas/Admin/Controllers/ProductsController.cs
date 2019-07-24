@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using GroceryList.Data;
 using GroceryList.Models;
 using GroceryList.Models.ViewModel;
 using GroceryList.Utility;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting.Internal;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
+
+
 
 namespace GroceryList.Controllers
 {
@@ -26,7 +26,7 @@ namespace GroceryList.Controllers
         [BindProperty]
         public ProductsViewModel ProductsVM { get; set; }
 
-
+        
         public ProductsController(ApplicationDbContext db, HostingEnvironment hostingEnvironment)
         {
             _db = db;
@@ -34,7 +34,8 @@ namespace GroceryList.Controllers
             ProductsVM = new ProductsViewModel()
             {
                 ProductTypes = _db.ProductTypes.ToList(),          
-                Products = new Models.Products()
+                Products = new Models.Products(),
+               
             };
 
         }
@@ -229,7 +230,6 @@ namespace GroceryList.Controllers
                 return RedirectToAction(nameof(Index));
             }
         }
-
-     
+       
     }
 }

@@ -27,7 +27,22 @@ namespace GroceryList.Models
 
         [ForeignKey("ProductTypeId")]
         public virtual ProductTypes ProductTypes { get; set; }
-  
 
+        private object products;
+
+        public object GetProducts()
+        {
+            return products;
+        }
+
+        internal void SetProducts(object value)
+        {
+            products = value;
+        }
+
+        public static implicit operator Products(List<Products> v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

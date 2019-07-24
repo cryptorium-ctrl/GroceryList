@@ -13,7 +13,7 @@ namespace GroceryList.Areas.Admin.Controllers
     { //Connect Controller to DB
         private readonly ApplicationDbContext _db; 
 
-        public ProductTypesController( ApplicationDbContext db)
+        public ProductTypesController(ApplicationDbContext db)
         {
             _db = db;
         }
@@ -124,5 +124,7 @@ namespace GroceryList.Areas.Admin.Controllers
             await _db.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+        
     }
 }
